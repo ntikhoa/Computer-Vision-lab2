@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source Files\Detector">
+      <UniqueIdentifier>{46e0ee3a-45be-449c-8b9b-2a436bcdf41f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Descriptor">
+      <UniqueIdentifier>{3f819da5-c542-48ef-8e61-d3fe3b72ece1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Detector">
+      <UniqueIdentifier>{2fe73bd9-1027-4467-b655-0633004b56a6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Descriptor">
+      <UniqueIdentifier>{e63094b7-b13c-4886-9348-ce46d27271c2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Utils">
+      <UniqueIdentifier>{581a3824-60ce-492f-af90-a9053f5aeaca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Utils">
+      <UniqueIdentifier>{1f4c09da-5508-4604-be8e-fd878284848f}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SiftDescriptor.cpp">
+      <Filter>Source Files\Descriptor</Filter>
+    </ClCompile>
+    <ClCompile Include="LocalBinaryPattern.cpp">
+      <Filter>Source Files\Descriptor</Filter>
+    </ClCompile>
+    <ClCompile Include="ImageHelper.cpp">
+      <Filter>Source Files\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="ImageHelper.h">
+      <Filter>Header Files\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="Blob.cpp">
+      <Filter>Source Files\Detector</Filter>
+    </ClCompile>
+    <ClCompile Include="DoG.cpp">
+      <Filter>Source Files\Detector</Filter>
+    </ClCompile>
+    <ClCompile Include="Harris.cpp">
+      <Filter>Source Files\Detector</Filter>
+    </ClCompile>
+    <ClCompile Include="SiftHarris.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SiftBlob.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SiftDoG.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="SiftDescriptor.h">
+      <Filter>Header Files\Descriptor</Filter>
+    </ClInclude>
+    <ClInclude Include="LocalBinaryPattern.h">
+      <Filter>Header Files\Descriptor</Filter>
+    </ClInclude>
+    <ClInclude Include="Blob.h">
+      <Filter>Header Files\Detector</Filter>
+    </ClInclude>
+    <ClInclude Include="DoG.h">
+      <Filter>Header Files\Detector</Filter>
+    </ClInclude>
+    <ClInclude Include="Harris.h">
+      <Filter>Header Files\Detector</Filter>
+    </ClInclude>
+    <ClInclude Include="SiftHarris.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SiftBlob.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SiftDoG.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
