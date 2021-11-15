@@ -7,8 +7,6 @@ using namespace std;
 
 void performBlob(String fileName);
 
-vector<KeyPoint> getBlobKeyPoints(Mat img, int minArea);
-
-void OnTrackbarBlob(int pos, void* userData);
+vector<KeyPoint> getBlobKeyPoints(Mat gray, int minArea);
 
 Ptr<SimpleBlobDetector> createSimpleBlobDetector(int minArea);

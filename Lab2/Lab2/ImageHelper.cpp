@@ -11,6 +11,6 @@ Mat grayImg(Mat img) {
 	return gray;
 }
 
-void drawKpGreen(Mat img, vector<KeyPoint> kp, Mat &res) {
+void drawKpGreen(Mat img, vector<KeyPoint> kp, Mat& res) {
 	drawKeypoints(img, kp, res, Scalar(0, 255, 0), DrawMatchesFlags::DRAW_RICH_KEYPOINTS);
 }

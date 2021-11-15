@@ -3,35 +3,35 @@
 
 void performHarris(String fileName) {
     Mat img = readImg(fileName);
+    Mat gray = grayImg(img);
 
-    namedWindow("Show Image");
+    int prevPos = -1;
     int pos = 3;
-    createTrackbar("Tracbar", "Show Image", &pos, 30, 
-        OnTrackbarHarris, &img);
+    namedWindow("Show Image");
+    createTrackbar("Tracbar", "Show Image", &pos, 30);
+
+    while (getWindowProperty("Show Image", WND_PROP_VISIBLE) > 0) {
+        if (pos % 2 == 0) {
+            pos = pos + 1;
+        }
+        if (prevPos != pos) {
+            vector<KeyPoint> kp;
+            kp = getHarrisKeyPoints(gray, pos);
+
+            Mat res;
+            drawKpGreen(img, kp, res);
+
+            imshow("Show Image", res);
+            prevPos = pos;
+        }
+        waitKey(2000);
+    }
 
     waitKey(0);
 }
 
-void OnTrackbarHarris(int pos, void* userData) {
-    Mat img = *(static_cast <Mat*>(userData));
-
-    if (pos % 2 == 0) {
-        pos = pos - 1;
-    }
-
+vector<KeyPoint> getHarrisKeyPoints(Mat gray, int apertureSize) {
     vector<KeyPoint> kp;
-    kp = getHarrisKeyPoints(img, pos);
-
-    Mat res;
-    drawKpGreen(img, kp, res);
-
-    imshow("Show Image", res);
-}
-
-vector<KeyPoint> getHarrisKeyPoints(Mat img, int apertureSize) {
-    vector<KeyPoint> kp;
-
-    Mat gray = grayImg(img);
 
     Mat res;
     cornerHarris(gray, res, 2, apertureSize, 0.04);

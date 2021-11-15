@@ -7,9 +7,7 @@ using namespace std;
 
 void performHarris(String fileName);
 
-void OnTrackbarHarris(int pos, void* userData);
-
-vector<KeyPoint> getHarrisKeyPoints(Mat img, int apertureSize);
+vector<KeyPoint> getHarrisKeyPoints(Mat gray, int apertureSize);
 
 vector<KeyPoint> calculateHarrisKeyPoints(Mat img);
 

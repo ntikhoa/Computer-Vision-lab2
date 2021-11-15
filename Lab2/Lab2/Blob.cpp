@@ -3,31 +3,32 @@
 
 void performBlob(String fileName) {
     Mat img = readImg(fileName);
+    Mat gray = grayImg(img);
 
-    namedWindow("Show Image");
     int pos = 1;
-    createTrackbar("Tracbar", "Show Image", &pos, 100,
-        OnTrackbarBlob, &img);
+    int prevPos = -1;
+    namedWindow("Show Image");
+    createTrackbar("Tracbar", "Show Image", &pos, 100);
+
+    while (getWindowProperty("Show Image", WND_PROP_VISIBLE) > 0) {
+        if (prevPos != pos) {
+            vector<KeyPoint> kp;
+            kp = getBlobKeyPoints(gray, pos);
+
+            Mat res;
+            drawKpGreen(img, kp, res);
+
+            imshow("Show Image", res);
+            prevPos = pos;
+        }
+        waitKey(2000);
+    }
 
     waitKey(0);
 }
 
-void OnTrackbarBlob(int pos, void* userData) {
-    Mat img = *(static_cast <Mat*>(userData));
-
-    vector<KeyPoint> kp;
-    kp = getBlobKeyPoints(img, pos);
-
-    Mat res;
-    drawKpGreen(img, kp, res);
-
-    imshow("Show Image", res);
-}
-
-vector<KeyPoint> getBlobKeyPoints(Mat img, int minArea) {
+vector<KeyPoint> getBlobKeyPoints(Mat gray, int minArea) {
     vector<KeyPoint> keyPoints;
-
-    Mat gray = grayImg(img);
 
     Ptr<SimpleBlobDetector> detector = createSimpleBlobDetector(minArea);
 

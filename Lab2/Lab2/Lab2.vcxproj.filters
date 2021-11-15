@@ -42,12 +42,6 @@
     <ClCompile Include="LocalBinaryPattern.cpp">
       <Filter>Source Files\Descriptor</Filter>
     </ClCompile>
-    <ClCompile Include="ImageHelper.cpp">
-      <Filter>Source Files\Utils</Filter>
-    </ClCompile>
-    <ClCompile Include="ImageHelper.h">
-      <Filter>Header Files\Utils</Filter>
-    </ClCompile>
     <ClCompile Include="Blob.cpp">
       <Filter>Source Files\Detector</Filter>
     </ClCompile>
@@ -65,6 +59,9 @@
     </ClCompile>
     <ClCompile Include="SiftDoG.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ImageHelper.cpp">
+      <Filter>Source Files\Utils</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -91,6 +88,9 @@
     </ClInclude>
     <ClInclude Include="SiftDoG.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageHelper.h">
+      <Filter>Header Files\Utils</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

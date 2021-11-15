@@ -148,12 +148,11 @@
     <ClCompile Include="Blob.cpp" />
     <ClCompile Include="DoG.cpp" />
     <ClCompile Include="Harris.cpp" />
+    <ClCompile Include="ImageHelper.cpp" />
     <ClCompile Include="LocalBinaryPattern.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="ImageHelper.cpp" />
     <ClCompile Include="SiftBlob.cpp" />
     <ClCompile Include="SiftDescriptor.cpp" />
-    <ClCompile Include="ImageHelper.h" />
     <ClCompile Include="SiftDoG.cpp" />
     <ClCompile Include="SiftHarris.cpp" />
   </ItemGroup>
@@ -161,6 +160,7 @@
     <ClInclude Include="Blob.h" />
     <ClInclude Include="DoG.h" />
     <ClInclude Include="Harris.h" />
+    <ClInclude Include="ImageHelper.h" />
     <ClInclude Include="LocalBinaryPattern.h" />
     <ClInclude Include="SiftBlob.h" />
     <ClInclude Include="SiftDescriptor.h" />

@@ -7,6 +7,4 @@ using namespace std;
 
 void performDoG(String fileName);
 
-void OnTrackbarDoG(int pos, void* userData);
-
-vector<KeyPoint> getDoGkeyPoints(Mat img, double sigma);
+vector<KeyPoint> getDoGkeyPoints(Mat gray, double sigma);
