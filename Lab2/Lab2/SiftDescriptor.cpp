@@ -1,13 +1,10 @@
 #include "SiftDescriptor.h"
 #include "ImageHelper.h"
 
-vector<DMatch> sift(Mat img1, vector<KeyPoint> kp1, Mat img2, vector<KeyPoint> kp2) {
+vector<DMatch> sift(Mat gray1, vector<KeyPoint> kp1, Mat gray2, vector<KeyPoint> kp2) {
     Mat des1, des2;
     vector<vector<DMatch>> matches;
     Ptr<SIFT> sift = SIFT::create();
-
-    Mat gray1 = grayImg(img1);
-    Mat gray2 = grayImg(img2);
 
     sift->compute(gray1, kp1, des1);
     sift->compute(gray2, kp2, des2);

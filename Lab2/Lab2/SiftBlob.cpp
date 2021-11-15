@@ -7,16 +7,29 @@
 void blobDetectorWithSiftDescriptor(String fileName1, String fileName2) {
     Mat img1 = readImg(fileName1);
     Mat img2 = readImg(fileName2);
+    Mat gray1 = grayImg(img1);
+    Mat gray2 = grayImg(img2);
 
-    vector<KeyPoint> kp1, kp2;
-    kp1 = getBlobKeyPoints(img1, 0);
-    kp2 = getBlobKeyPoints(img2, 0);
+    int pos = 1;
+    int prevPos = -1;
+    namedWindow("Show Image");
+    createTrackbar("Tracbar", "Show Image", &pos, 100);
 
-    vector<DMatch> good = sift(img1, kp1, img2, kp2);
+    while (getWindowProperty("Show Image", WND_PROP_VISIBLE) > 0) {
+        if (prevPos != pos) {
+            vector<KeyPoint> kp1, kp2;
+            kp1 = getBlobKeyPoints(gray1, pos);
+            kp2 = getBlobKeyPoints(gray2, pos);
 
-    Mat result;
-    drawMatches(img1, kp1, img2, kp2, good, result);
+            vector<DMatch> good = sift(gray1, kp1, gray2, kp2);
 
-    imshow("Show Image", result);
+            Mat result;
+            drawMatches(img1, kp1, img2, kp2, good, result);
+            imshow("Show Image", result);
+
+            prevPos = pos;
+        }
+        waitKey(2000);
+    }
     waitKey(0);
 }

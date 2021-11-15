@@ -6,33 +6,35 @@
 void harrisDetectorWithSiftDescriptor(String fileName1, String fileName2) {
     Mat img1 = readImg(fileName1);
     Mat img2 = readImg(fileName2);
+    Mat gray1 = grayImg(img1);
+    Mat gray2 = grayImg(img2);
 
-    vector<KeyPoint> kp1, kp2;
+    int prevPos = -1;
+    int pos = 3;
+    namedWindow("Show Image");
+    createTrackbar("Tracbar", "Show Image", &pos, 30);
 
-    kp1 = getHarrisKeyPoints(img1, 3);
-    kp2 = getHarrisKeyPoints(img2, 3);
+    while (getWindowProperty("Show Image", WND_PROP_VISIBLE) > 0) {
+        if (pos % 2 == 0) {
+            pos = pos + 1;
+        }
+        if (prevPos != pos) {
 
-    vector<DMatch> good = sift(img1, kp1, img2, kp2);
+            vector<KeyPoint> kp1, kp2;
 
-    Mat res;
-    drawMatches(img1, kp1, img2, kp2, good, res);
+            kp1 = getHarrisKeyPoints(gray1, pos);
+            kp2 = getHarrisKeyPoints(gray2, pos);
 
-    imshow("Show Image", res);
-    waitKey(0);
-}
+            vector<DMatch> good = sift(gray1, kp1, gray2, kp2);
 
-void OnTrackbarSiftHarris(int pos, void* userData) {
-    Mat img = *(static_cast <Mat*>(userData));
+            Mat res;
+            drawMatches(img1, kp1, img2, kp2, good, res);
 
-    if (pos % 2 == 0) {
-        pos = pos - 1;
+            imshow("Show Image", res);
+
+            prevPos = pos;
+        }
+        waitKey(2000);
     }
-
-    vector<KeyPoint> kp;
-    kp = getHarrisKeyPoints(img, pos);
-
-    Mat res;
-    drawKpGreen(img, kp, res);
-
-    imshow("Show Image", res);
+    waitKey(0);
 }
