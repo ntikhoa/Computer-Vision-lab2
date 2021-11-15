@@ -45,7 +45,7 @@ vector<KeyPoint> calculateHarrisKeyPoints(Mat img) {
     vector<KeyPoint> kp;
     for (int i = 0; i < img.rows; i++) {
         for (int j = 0; j < img.cols; j++) {
-            if (img.at<float>(i, j) >= max * 0.01) {
+            if (img.at<float>(i, j) >= max * 0.04) {
                 kp.push_back(KeyPoint(j, i, 1));
             }
         }

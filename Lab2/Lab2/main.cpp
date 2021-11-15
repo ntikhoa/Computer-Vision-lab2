@@ -16,6 +16,6 @@ int main(int argc, char* argv[])
 
     //harrisDetectorWithSiftDescriptor("text_in_scene.jpg", "headpat_rem.jpg");
     //DoGdetectorWithSiftDescriptor("text_in_scene.jpg", "headpat_rem.jpg");
-    blobDetectorWithSiftDescriptor("headpat_rem_croped.jpg", "headpat_rem.jpg");
+    //blobDetectorWithSiftDescriptor("headpat_rem_croped.jpg", "headpat_rem.jpg");
     return 0;
 }
