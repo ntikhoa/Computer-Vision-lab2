@@ -1,9 +1,20 @@
 #include "DoG.h"
 #include "ImageHelper.h"
+#include "VideoHelper.h"
 
 void performDoG(String fileName) {
-    Mat img = readImg(fileName);
-    Mat gray = grayImg(img);
+    Mat img, gray;
+    VideoCapture cap;
+
+    bool isCamera = false;
+    if (fileName == "") {
+        isCamera = true;
+        cap = getVideoCapture();
+    }
+    else {
+        img = readImg(fileName);
+        gray = grayImg(img);
+    }
 
     int prevPos = -1;
     int pos = 2;
@@ -11,7 +22,13 @@ void performDoG(String fileName) {
     createTrackbar("Tracbar", "Show Image", &pos, 50);
 
     while (getWindowProperty("Show Image", WND_PROP_VISIBLE) > 0) {
-        if (prevPos != pos) {
+        
+        if (isCamera) {
+            cap.read(img);
+            gray = grayImg(img);
+        }
+
+        if (prevPos != pos || isCamera) {
             vector<KeyPoint> kp;
             kp = getDoGkeyPoints(gray, pos);
 

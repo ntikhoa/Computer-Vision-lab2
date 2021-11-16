@@ -1,9 +1,21 @@
 #include "Harris.h"
 #include "ImageHelper.h"
+#include "VideoHelper.h"
 
 void performHarris(String fileName) {
-    Mat img = readImg(fileName);
-    Mat gray = grayImg(img);
+    Mat img, gray;
+    VideoCapture cap;
+
+    bool isCamera = false;
+    if (fileName == "") {
+        isCamera = true;
+        cap = getVideoCapture();
+    }
+    else {
+        img = readImg(fileName);
+        gray = grayImg(img);
+    }
+
 
     int prevPos = -1;
     int pos = 3;
@@ -14,7 +26,13 @@ void performHarris(String fileName) {
         if (pos % 2 == 0) {
             pos = pos + 1;
         }
-        if (prevPos != pos) {
+        
+        if (isCamera) {
+            cap.read(img);
+            gray = grayImg(img);
+        }
+
+        if (prevPos != pos || isCamera) {
             vector<KeyPoint> kp;
             kp = getHarrisKeyPoints(gray, pos);
 
@@ -26,7 +44,7 @@ void performHarris(String fileName) {
         }
         waitKey(2000);
     }
-
+    
     waitKey(0);
 }
 

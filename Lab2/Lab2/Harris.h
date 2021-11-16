@@ -12,3 +12,5 @@ vector<KeyPoint> getHarrisKeyPoints(Mat gray, int apertureSize);
 vector<KeyPoint> calculateHarrisKeyPoints(Mat img);
 
 float findMaxResVal(Mat img);
+
+void showCamera(VideoCapture cap);

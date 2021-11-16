@@ -155,6 +155,7 @@
     <ClCompile Include="SiftDescriptor.cpp" />
     <ClCompile Include="SiftDoG.cpp" />
     <ClCompile Include="SiftHarris.cpp" />
+    <ClCompile Include="VideoHelper.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Blob.h" />
@@ -166,6 +167,7 @@
     <ClInclude Include="SiftDescriptor.h" />
     <ClInclude Include="SiftDoG.h" />
     <ClInclude Include="SiftHarris.h" />
+    <ClInclude Include="VideoHelper.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

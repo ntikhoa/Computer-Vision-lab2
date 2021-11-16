@@ -5,36 +5,52 @@
 #include "SiftHarris.h"
 #include "SiftDoG.h"
 #include "SiftBlob.h"
-#include <opencv2/videoio.hpp>
+#include <fstream>
 
+
+void cryForHelp();
 
 int main(int argc, char* argv[])
 {
+    cout << "\'h\' for help" << endl;
+    while (true) {
+        String cmd;
+        getline(cin, cmd);
+        if (cmd == "h") {
+            cryForHelp();
+        }
+        else if (cmd == "end") {
+            break;
+        }
+        else {
+            cout << "\'" << cmd << "\'" << " command not found" << endl;
+            cout << "\'h\' for help" << endl;
+            cout << "or \'end\' to exit" << endl;
+        }
+    }
+
+
     //performHarris("headpat_rem.jpg");
+    //performHarris("");
     //performDoG("headpat_rem.jpg");
+    //performDoG("");
     //performBlob("headpat_rem.jpg");
+    //performBlob("");
 
     //harrisDetectorWithSiftDescriptor("text_in_scene.jpg", "headpat_rem.jpg");
     //DoGdetectorWithSiftDescriptor("text_in_scene.jpg", "headpat_rem.jpg");
     //blobDetectorWithSiftDescriptor("headpat_rem_croped.jpg", "headpat_rem.jpg");
-
-    
-    Mat frame;
-    VideoCapture cap;
-    int deviceID = 0;             // 0 = open default camera
-    int apiID = cv::CAP_ANY;      // 0 = autodetect default API
-    cap.open(deviceID, apiID);
-    if (!cap.isOpened()) {
-        cerr << "ERROR! Unable to open camera\n";
-        return -1;
-    }
-    namedWindow("Live");
-    while(getWindowProperty("Live", WND_PROP_VISIBLE) > 0)
-    {
-        cap.read(frame);
-        imshow("Live", frame);
-        waitKey(5);
-    }
     
     return 0;
+}
+
+void cryForHelp() {
+    ifstream fin("help.txt");
+    string myText;
+    cout << endl;
+    while (getline(fin, myText)) {
+        cout << myText << endl;
+    }
+    cout << endl;
+    fin.close();
 }
