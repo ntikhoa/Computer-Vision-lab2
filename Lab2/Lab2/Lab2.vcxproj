@@ -155,6 +155,8 @@
     <ClCompile Include="SiftDescriptor.cpp" />
     <ClCompile Include="SiftDoG.cpp" />
     <ClCompile Include="SiftHarris.cpp" />
+    <ClCompile Include="StringHelper.h" />
+    <ClCompile Include="StringHelper.cpp" />
     <ClCompile Include="VideoHelper.cpp" />
   </ItemGroup>
   <ItemGroup>

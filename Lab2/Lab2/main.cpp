@@ -5,6 +5,7 @@
 #include "SiftHarris.h"
 #include "SiftDoG.h"
 #include "SiftBlob.h"
+#include "StringHelper.h"
 #include <fstream>
 
 
@@ -23,12 +24,18 @@ int main(int argc, char* argv[])
             break;
         }
         else {
+            /*
             cout << "\'" << cmd << "\'" << " command not found" << endl;
             cout << "\'h\' for help" << endl;
             cout << "or \'end\' to exit" << endl;
+            */
+            vector<String> arg = split(cmd);
+            cout << arg.size() << endl;
+            for (int i = 0; i < arg.size(); i++) {
+                cout << arg[i] << endl;
+            }
         }
     }
-
 
     //performHarris("headpat_rem.jpg");
     //performHarris("");
