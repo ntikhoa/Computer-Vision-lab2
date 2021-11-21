@@ -23,6 +23,7 @@ void performHarris(String fileName) {
     createTrackbar("Tracbar", "Show Image", &pos, 30);
 
     while (getWindowProperty("Show Image", WND_PROP_VISIBLE) > 0) {
+        waitKey(2000);
         if (pos % 2 == 0) {
             pos = pos + 1;
         }
@@ -42,7 +43,6 @@ void performHarris(String fileName) {
             imshow("Show Image", res);
             prevPos = pos;
         }
-        waitKey(2000);
     }
     
     waitKey(0);

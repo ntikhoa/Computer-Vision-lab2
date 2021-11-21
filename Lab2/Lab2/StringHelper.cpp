@@ -1,15 +1,18 @@
 #include "StringHelper.h"
 
 vector<String> split(String cmd) {
-    char space_char = ' ';
-    vector<string> words{};
+    vector<String> words;
 
-    stringstream sstream(cmd);
-    string word;
-    while (std::getline(sstream, word, space_char)) {
-        word.erase(std::remove_if(word.begin(), word.end(), ispunct), word.end());
-        words.push_back(word);
+    String c = "";
+    for (int i = 0; i < cmd.size(); i++) {
+        if (cmd[i] != ' ') {
+            c += cmd[i];
+        }
+        else {
+            words.push_back(c);
+            c = "";
+        }
     }
-
+    words.push_back(c);
     return words;
 }

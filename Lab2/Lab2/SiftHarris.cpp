@@ -1,13 +1,26 @@
 #include "SiftHarris.h"
 #include "SiftDescriptor.h"
-#include "ImageHelper.h"
 #include "Harris.h"
+#include "ImageHelper.h"
+#include "VideoHelper.h"
 
 void harrisDetectorWithSiftDescriptor(String fileName1, String fileName2) {
     Mat img1 = readImg(fileName1);
-    Mat img2 = readImg(fileName2);
     Mat gray1 = grayImg(img1);
-    Mat gray2 = grayImg(img2);
+
+    Mat img2, gray2;
+
+    VideoCapture cap;
+
+    bool isCamera = false;
+    if (fileName2 == "") {
+        isCamera = true;
+        cap = getVideoCapture();
+    }
+    else {
+        img2 = readImg(fileName2);
+        gray2 = grayImg(img2);
+    }
 
     int prevPos = -1;
     int pos = 3;
@@ -18,7 +31,13 @@ void harrisDetectorWithSiftDescriptor(String fileName1, String fileName2) {
         if (pos % 2 == 0) {
             pos = pos + 1;
         }
-        if (prevPos != pos) {
+
+        if (isCamera) {
+            cap.read(img2);
+            gray2 = grayImg(img2);
+        }
+
+        if (prevPos != pos || isCamera) {
 
             vector<KeyPoint> kp1, kp2;
 
