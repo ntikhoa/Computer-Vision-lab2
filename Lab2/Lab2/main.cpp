@@ -66,6 +66,10 @@ int main(int argc, char* argv[])
                 if (args[1] == "dog" && args[2] == "sift") {
                     DoGdetectorWithSiftDescriptor(fileName1, fileName2);
                 }
+
+                if (args[2] == "lbp") {
+                    cout << "Sorry, I don't know how to implement LBP :<" << endl;
+                }
             }
             else {
                 cout << "\'" << cmd << "\'" << " command not found" << endl;
@@ -74,10 +78,7 @@ int main(int argc, char* argv[])
             }
         }
     }
-
-    //DoGdetectorWithSiftDescriptor("text_in_scene.jpg", "headpat_rem.jpg");
-    //blobDetectorWithSiftDescriptor("headpat_rem_croped.jpg", "headpat_rem.jpg");
-    
+  
     return 0;
 }
 
