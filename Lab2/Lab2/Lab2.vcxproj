@@ -149,13 +149,15 @@
     <ClCompile Include="DoG.cpp" />
     <ClCompile Include="Harris.cpp" />
     <ClCompile Include="ImageHelper.cpp" />
+    <ClCompile Include="LbpBlob.cpp" />
+    <ClCompile Include="LbpDoG.cpp" />
+    <ClCompile Include="LbpHarris.cpp" />
     <ClCompile Include="LocalBinaryPattern.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="SiftBlob.cpp" />
     <ClCompile Include="SiftDescriptor.cpp" />
     <ClCompile Include="SiftDoG.cpp" />
     <ClCompile Include="SiftHarris.cpp" />
-    <ClCompile Include="StringHelper.h" />
     <ClCompile Include="StringHelper.cpp" />
     <ClCompile Include="VideoHelper.cpp" />
   </ItemGroup>
@@ -164,11 +166,15 @@
     <ClInclude Include="DoG.h" />
     <ClInclude Include="Harris.h" />
     <ClInclude Include="ImageHelper.h" />
+    <ClInclude Include="LbpBlob.h" />
+    <ClInclude Include="LbpDoG.h" />
+    <ClInclude Include="LbpHarris.h" />
     <ClInclude Include="LocalBinaryPattern.h" />
     <ClInclude Include="SiftBlob.h" />
     <ClInclude Include="SiftDescriptor.h" />
     <ClInclude Include="SiftDoG.h" />
     <ClInclude Include="SiftHarris.h" />
+    <ClInclude Include="StringHelper.h" />
     <ClInclude Include="VideoHelper.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

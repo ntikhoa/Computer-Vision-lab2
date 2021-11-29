@@ -1,23 +1,25 @@
 #include "LocalBinaryPattern.h"
+#include "ImageHelper.h"
 
+vector<DMatch> lbp(Mat gray1, vector<KeyPoint> kp1, Mat gray2, vector<KeyPoint> kp2) {
+    Mat des1, des2;
+    vector<vector<DMatch>> matches;
+    Ptr<BRISK> brisk = BRISK::create();
 
-void LBP::compute(Mat src, Mat& dst) {
-    dst = Mat::zeros(src.rows - 2, src.cols - 2, CV_8UC1);
-    for (int i = 1; i < src.rows - 1; i++) {
-        for (int j = 1; j < src.cols - 1; j++) {
-            uchar center = src.at<uchar>(i, j);
-            uchar code = 0;
-            //uchar center = src.at<uchar>(i, j);
-            //unsigned char code = 0;
-            code |= (src.at<uchar>(i - 1, j - 1) > center) << 7;
-            code |= (src.at<uchar>(i - 1, j) > center) << 6;
-            code |= (src.at<uchar>(i - 1, j + 1) > center) << 5;
-            code |= (src.at<uchar>(i, j + 1) > center) << 4;
-            code |= (src.at<uchar>(i + 1, j + 1) > center) << 3;
-            code |= (src.at<uchar>(i + 1, j) > center) << 2;
-            code |= (src.at<uchar>(i + 1, j - 1) > center) << 1;
-            code |= (src.at<uchar>(i, j - 1) > center) << 0;
-            dst.at<uchar>(i - 1, j - 1) = code;
-        }
+    brisk->compute(gray1, kp1, des1);
+    brisk->compute(gray2, kp2, des2);
+
+    BFMatcher bf;
+    bf.knnMatch(des1, des2, matches, 2);
+
+    vector<DMatch> goodMatches;
+
+    for (int i = 0; i < matches.size(); i++) {
+        float rejectRatio = 0.8;
+        if (matches[i][0].distance / matches[i][1].distance > rejectRatio)
+            continue;
+        goodMatches.push_back(matches[i][0]);
     }
+
+    return goodMatches;
 }

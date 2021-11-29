@@ -6,6 +6,5 @@
 using namespace std;
 using namespace cv;
 
-class LBP {
-    void compute(Mat src, Mat& dst);
-};
+
+vector<DMatch> lbp(Mat gray1, vector<KeyPoint> kp1, Mat gray2, vector<KeyPoint> kp2);

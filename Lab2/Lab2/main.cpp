@@ -1,10 +1,15 @@
 #include "Harris.h"
 #include "Blob.h"
 #include "DoG.h"
-#include "SiftDescriptor.h"
+
 #include "SiftHarris.h"
 #include "SiftDoG.h"
 #include "SiftBlob.h"
+
+#include "LbpHarris.h"
+#include "LbpBlob.h"
+#include "LbpDoG.h"
+
 #include "StringHelper.h"
 #include <fstream>
 
@@ -14,6 +19,7 @@ void cryForHelp();
 int main(int argc, char* argv[])
 {
     cout << "\'h\' for help" << endl;
+
     while (true) {
         String cmd;
         getline(cin, cmd);
@@ -24,9 +30,9 @@ int main(int argc, char* argv[])
             break;
         }
         else {
-            
+
             vector<String> args = split(cmd);
-            
+
             if (args[0] == "harris") {
                 String fileName = "";
                 if (args.size() > 1) {
@@ -41,7 +47,8 @@ int main(int argc, char* argv[])
                     fileName = args[1];
                 }
                 performBlob(fileName);
-            } else if (args[0] == "dog") {
+            }
+            else if (args[0] == "dog") {
                 String fileName = "";
                 if (args.size() > 1) {
                     fileName = args[1];
@@ -54,7 +61,7 @@ int main(int argc, char* argv[])
                 if (args.size() == 5) {
                     fileName2 = args[4];
                 }
-                
+
                 if (args[1] == "harris" && args[2] == "sift") {
                     harrisDetectorWithSiftDescriptor(fileName1, fileName2);
                 }
@@ -67,8 +74,16 @@ int main(int argc, char* argv[])
                     DoGdetectorWithSiftDescriptor(fileName1, fileName2);
                 }
 
-                if (args[2] == "lbp") {
-                    cout << "Sorry, I don't know how to implement LBP :<" << endl;
+                if (args[1] == "harris" && args[2] == "lbp") {
+                    harrisDetectorWithLbpDescriptor(fileName1, fileName2);
+                }
+
+                if (args[1] == "blob" && args[2] == "lbp") {
+                    blobDetectorWithLbpDescriptor(fileName1, fileName2);
+                }
+
+                if (args[1] == "dog" && args[2] == "lbp") {
+                    DoGdetectorWithLbpDescriptor(fileName1, fileName2);
                 }
             }
             else {
@@ -78,7 +93,7 @@ int main(int argc, char* argv[])
             }
         }
     }
-  
+
     return 0;
 }
 
